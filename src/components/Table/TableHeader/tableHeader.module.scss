@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  background-color: #474955;
+  color: white;
+  line-height: 54px;
+  margin: 15px 0 0;
+  height: 54px;
+  width: 100%;
+}
+
+.header_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_id {
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 10%;
+}
+
+.header_title {
+  padding-left: 11%;
+  padding-right: 26%;
+  width: 50%;
+}
+
+.header_description {
+  padding-left: 10%;
+  padding-right: 19%;
+  width: 40%;
+}
+
+.chevron {
+  transition: all 0.2s ease-in;
+}
+
+.chevron__turned {
+  transform: rotate(180deg);
+}

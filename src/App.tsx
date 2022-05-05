@@ -1,26 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import React, {useEffect} from 'react';
+import Table from "./components/Table/Table";
+import {Route, Routes} from "react-router-dom";
+import Pagination from "./components/Pagination/Pagination";
+import {useAppDispatch, useAppSelector} from "./Redux/hooks";
+import SearchInput from "./components/SearchInput/SearchInput";
+import {getCurrentPage, getSearchString, getTotalPages} from "./Redux/selectors";
+import {changeTableSliceValue, getAllPostData, getCurrentPageData} from "./Redux/tableSlice";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const dispatch = useAppDispatch()
+    const totalPages: number = useAppSelector(getTotalPages)
+    const currentPage: number = useAppSelector(getCurrentPage)
+    const searchString: string = useAppSelector(getSearchString)
+
+    useEffect(() => {
+        dispatch(getAllPostData())
+    }, [dispatch])
+
+    useEffect(() => {
+        dispatch(getCurrentPageData(Number(currentPage)))
+    }, [currentPage, dispatch])
+
+    return (
+        <div className={"wrapper"}>
+            <div className="App">
+                <SearchInput value={searchString} placeholder={"Поиск "} action={changeTableSliceValue}/>
+                <Routes>
+                    <Route path={"/*"} element={<Table/>}/>
+                </Routes>
+                <div className={"pagination_wrapper"}>
+                    <Pagination currentPage={currentPage} pagesCount={totalPages}/>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default App;

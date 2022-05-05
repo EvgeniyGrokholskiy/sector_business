@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 631px;
+  width: 100%;
+}
+
+.input {
+  background-color: #5A5C66;
+  border: none;
+  color: #B2B7BF;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0;
+  padding-left: 24px;
+  text-align: left;
+  height: 52px;
+  max-width: 631px;
+  width: 100%;
+}
+
+.lens {
+  position: absolute;
+  left: 93%;
+}

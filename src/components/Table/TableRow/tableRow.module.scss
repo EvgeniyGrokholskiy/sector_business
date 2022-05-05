@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+}
+
+.item {
+  border: 1px solid #E3E6EC;
+  display: flex;
+  align-items: center;
+  font-family: Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0;
+  text-align: left;
+  height: 87px;
+}
+
+.id {
+  justify-content: center;
+  text-align: center;
+  width: 10%;
+}
+
+.title {
+  padding-left: 8px;
+  width: 50%;
+}
+
+.description {
+  padding-left: 11px;
+  width: 40%;
+}

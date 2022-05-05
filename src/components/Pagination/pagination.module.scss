@@ -1,0 +1,43 @@
+@mixin fonts($size:24px, $font-weight: 500) {
+  font-family: Roboto, sans-serif;
+  font-size: $size;
+  font-weight: $font-weight;
+  line-height: 35px;
+  letter-spacing: 0;
+  text-align: left;
+}
+.pageButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 119px;
+  width: 100%;
+}
+
+.button {
+  @include fonts(24px);
+  border: none;
+  background: none;
+  color: #474955;
+  outline: none;
+  text-decoration: none;
+}
+
+.pageNumbersContainer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 204px;
+  width: 100%;
+}
+
+.pageButton {
+  @include fonts(18px, 700);
+  border: none;
+  background: none;
+  color: #474955;
+  outline: none;
+  text-decoration: none;
+}
+
+.current {
+  color: #7EBC3C;
+}
