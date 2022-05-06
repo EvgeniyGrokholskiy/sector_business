@@ -25,8 +25,7 @@ export const tableSlice = createSlice({
             state[action.payload.fieldName] = action.payload.value
         },
         setFilteredArray(state: ITableInitialState, action: PayloadAction<string>) {
-            const newArray = searchFilter<IPost>(state.postsArray, action.payload)
-            state.filteredArray = newArray
+            state.filteredArray = searchFilter<IPost>(state.postsArray, action.payload)
         },
         setSortMode(state: ITableInitialState, action: PayloadAction<{ fieldName: string, value: string }>) {
 
@@ -48,7 +47,7 @@ export const tableSlice = createSlice({
         })
         builder.addCase(getAllPostData.fulfilled, (state: ITableInitialState, action: PayloadAction<any>) => {
             state.isLoading = false
-            state.totalPages = action.payload
+            state.totalPages = Math.ceil(action.payload.length / 10)
         })
         builder.addCase(getAllPostData.rejected, (state: ITableInitialState, action: PayloadAction<any>) => {
             state.isLoading = false
@@ -69,20 +68,20 @@ export const tableSlice = createSlice({
     })
 })
 
-export const getAllPostData = createAsyncThunk<any, void, { state: RootState }>("table/getAllPostData", (_, {
+export const getAllPostData = createAsyncThunk<IPost[] | string, void, { state: RootState }>("table/getAllPostData", async (_, {
     rejectWithValue
 }) => {
     return api.getAllPosts()
-        .then((response) => Math.ceil(response.data.length / 10))
-        .catch((error) => rejectWithValue(error))
+        .then((response) => response.data)
+        .catch((error: { message: string }) => rejectWithValue(error.message))
 })
 
-export const getCurrentPageData = createAsyncThunk<any, number, { state: RootState }>("table/getCurrentPageData", (currentPage, {
+export const getCurrentPageData = createAsyncThunk<IPost[] | string, number, { state: RootState }>("table/getCurrentPageData", (currentPage, {
     rejectWithValue
 }) => {
     return api.getCurrentPage(currentPage)
         .then((response) => response.data)
-        .catch((error) => rejectWithValue(error))
+        .catch((error: { message: string }) => rejectWithValue(error.message))
 })
 
 export const tableReducer = tableSlice.reducer
