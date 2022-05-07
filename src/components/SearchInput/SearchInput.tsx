@@ -13,14 +13,16 @@ const SearchInput: React.FC<ISearchInputProps> = ({
 
     const dispatch = useAppDispatch()
 
+    const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+        const fieldName = "searchString"
+        const value = event.target.value
+        dispatch(action({fieldName, value}))
+    }
+
     return (
         <div className={styles.wrapper}>
             <input className={styles.input} type={"text"} placeholder={placeholder} value={value}
-                   onChange={(event) => {
-                       const fieldName = "searchString"
-                       const value = event.target.value
-                       dispatch(action({fieldName, value}))
-                   }}/>
+                   onChange={handleChange}/>
             <div className={styles.lens}>
                 <Lens/>
             </div>

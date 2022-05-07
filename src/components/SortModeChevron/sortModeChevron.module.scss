@@ -1,0 +1,7 @@
+.chevron {
+  transition: all 0.2s ease-in;
+}
+
+.chevron__turned {
+  transform: rotate(180deg);
+}

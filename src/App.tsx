@@ -9,7 +9,7 @@ import {getCurrentPage, getSearchString, getTotalPages} from "./Redux/selectors"
 import {changeTableSliceValue, getAllPostData, getCurrentPageData} from "./Redux/tableSlice";
 
 
-function App() {
+const App: React.FC = () => {
 
     const dispatch = useAppDispatch()
     const totalPages: number = useAppSelector(getTotalPages)
@@ -37,6 +37,6 @@ function App() {
             </div>
         </div>
     );
-}
+};
 
 export default App;
