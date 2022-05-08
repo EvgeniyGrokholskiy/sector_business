@@ -2,6 +2,7 @@ import './App.css';
 import React, {useEffect} from 'react';
 import Table from "./components/Table/Table";
 import {Route, Routes} from "react-router-dom";
+import {setCurrentPage} from "./Redux/appSlice";
 import Pagination from "./components/Pagination/Pagination";
 import {useAppDispatch, useAppSelector} from "./Redux/hooks";
 import SearchInput from "./components/SearchInput/SearchInput";
@@ -17,12 +18,21 @@ const App: React.FC = () => {
     const searchString: string = useAppSelector(getSearchString)
 
     useEffect(() => {
+        const currentPageLS = sessionStorage.getItem("currentPage")
+        currentPageLS && dispatch(setCurrentPage(Number(currentPageLS)))
+    }, [])
+
+    useEffect(() => {
         dispatch(getAllPostData())
     }, [dispatch])
 
     useEffect(() => {
         dispatch(getCurrentPageData(Number(currentPage)))
     }, [currentPage, dispatch])
+
+    useEffect(() => {
+        sessionStorage.setItem("currentPage", currentPage.toString())
+    }, [currentPage])
 
     return (
         <div className={"wrapper"}>
