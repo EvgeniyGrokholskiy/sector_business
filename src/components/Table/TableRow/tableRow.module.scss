@@ -12,7 +12,7 @@
   line-height: 18px;
   letter-spacing: 0;
   text-align: left;
-  height: 87px;
+  min-height: 87px;
 }
 
 .id {
@@ -23,10 +23,22 @@
 
 .title {
   padding-left: 8px;
+  padding-right: 8px;
   width: 50%;
 }
 
 .description {
   padding-left: 11px;
+  padding-right: 11px;
   width: 40%;
+}
+
+@media screen and (max-width: 550px) {
+  .title {
+    width: 40%;
+  }
+
+  .description {
+    width: 50%;
+  }
 }

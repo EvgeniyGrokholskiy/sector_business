@@ -26,3 +26,30 @@
   position: absolute;
   left: 93%;
 }
+
+@media screen and (max-width: 800px) {
+  .input {
+    width: 80%;
+  }
+  .lens {
+    left: 74%;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .lens {
+    left: 72%;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .lens {
+    left: 70%;
+  }
+}
+
+@media screen and (max-width: 400px){
+  .lens {
+    left: 65%;
+  }
+}

@@ -6,6 +6,7 @@
   letter-spacing: 0;
   text-align: left;
 }
+
 .pageButtonsContainer {
   display: flex;
   justify-content: space-between;
@@ -40,4 +41,22 @@
 
 .current {
   color: #7EBC3C;
+}
+
+@media screen and (max-width: 750px) {
+  .pageButtonsContainer {
+    padding: 0 5%;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .button {
+    font-size: 16px;
+  }
+  .pageNumbersContainer {
+    width: 40%;
+  }
+  .pageButton {
+    font-size: 14px;
+  }
 }
