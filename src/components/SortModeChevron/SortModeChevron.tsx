@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {useAppDispatch} from "../../Redux/hooks";
 import styles from "./sortModeChevron.module.scss";
 import {changeSortMode} from "../../helpers/helpers";
