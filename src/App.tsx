@@ -1,7 +1,8 @@
-import './App.css';
 import React, {useEffect} from 'react';
-import Table from "./components/Table/Table";
 import {Route, Routes} from "react-router-dom";
+
+import './App.css';
+import Table from "./components/Table/Table";
 import {setCurrentPage} from "./Redux/appSlice";
 import Pagination from "./components/Pagination/Pagination";
 import {useAppDispatch, useAppSelector} from "./Redux/hooks";
@@ -20,7 +21,7 @@ const App: React.FC = () => {
     useEffect(() => {
         const currentPageLS = sessionStorage.getItem("currentPage")
         currentPageLS && dispatch(setCurrentPage(Number(currentPageLS)))
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         dispatch(getAllPostData())
@@ -49,4 +50,4 @@ const App: React.FC = () => {
     );
 };
 
-export default App;
+export default React.memo(App);

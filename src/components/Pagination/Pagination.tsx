@@ -1,5 +1,6 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+
 import styles from "./pagination.module.scss";
 import {useAppDispatch} from "../../Redux/hooks";
 import {setCurrentPage} from "../../Redux/appSlice";

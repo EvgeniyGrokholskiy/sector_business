@@ -1,13 +1,14 @@
 import React from "react";
+
 import styles from "./tableHeader.module.scss";
-import {useAppSelector} from "../../../Redux/hooks";
-import {getSortsModeObj} from "../../../Redux/selectors";
 import SortModeChevron from "../../SortModeChevron/SortModeChevron";
+import {ITableHeaderProps} from "../../../types/types";
 
 
-const TableHeader: React.FC = () => {
+const TableHeader: React.FC<ITableHeaderProps> = ({idSortMode, titleSortMode, descriptionSortMode}) => {
+    console.log("render table header")
 
-    const {idSortMode, titleSortMode, descriptionSortMode} = useAppSelector(getSortsModeObj)
+    //const {idSortMode, titleSortMode, descriptionSortMode} = useAppSelector(getSortsModeObj)
 
     return (
         <div className={styles.header}>
@@ -24,4 +25,8 @@ const TableHeader: React.FC = () => {
     );
 };
 
-export default TableHeader;
+const areEqual = (prevProps: ITableHeaderProps, nextProps: ITableHeaderProps) => {
+    return  prevProps.idSortMode === nextProps.idSortMode || prevProps.titleSortMode === nextProps.titleSortMode || prevProps.descriptionSortMode === nextProps.descriptionSortMode
+}
+
+export default React.memo(TableHeader, areEqual);

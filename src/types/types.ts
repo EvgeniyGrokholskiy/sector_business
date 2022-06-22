@@ -49,3 +49,15 @@ export interface ISearchInputProps {
     value: string
     action: ActionCreatorWithPayload<{ fieldName: string, value: string }, string>
 }
+
+export interface ITableRowProps {
+    id: number
+    title: string
+    description: string
+}
+
+export interface ITableHeaderProps {
+    idSortMode: ">" | "<"
+    titleSortMode: ">" | "<"
+    descriptionSortMode: ">" | "<"
+}

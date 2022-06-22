@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import {IPost} from "../types/types";
 
 const instance = axios.create({
